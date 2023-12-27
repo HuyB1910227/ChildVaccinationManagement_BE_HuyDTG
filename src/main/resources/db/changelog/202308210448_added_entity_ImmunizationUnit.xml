@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!--
+        Added the entity ImmunizationUnit.
+    -->
+    <changeSet id="202308210448-1" author="huydtg">
+        <createTable tableName="immunization_unit">
+            <column name="id" type="${uuidType}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="address" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="operating_licence" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="hotline" type="varchar(20)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="is_active" type="boolean">
+                <constraints nullable="false" />
+            </column>
+            <column name="latitude" type="double">
+                <constraints nullable="false" />
+            </column>
+            <column name="longitude" type="double">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+    </changeSet>
+
+
+    <changeSet id="202308210448-1-data" author="huydtg" context="faker">
+        <loadData
+                file="db/fake-data/immunization_unit.csv"
+                separator=";"
+                tableName="immunization_unit"
+                usePreparedStatements="true">
+            <column name="id" type="string"/>
+            <column name="name" type="string"/>
+            <column name="address" type="string"/>
+            <column name="operating_licence" type="string"/>
+            <column name="hotline" type="string"/>
+            <column name="is_active" type="boolean"/>
+            <column name="latitude" type="numeric"/>
+            <column name="longitude" type="numeric"/>
+        </loadData>
+    </changeSet>
+
+
+</databaseChangeLog>

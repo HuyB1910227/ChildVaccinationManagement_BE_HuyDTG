@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <!--
+        Added the constraints for entity AppointmentCard.
+    -->
+    <changeSet id="202308210649-2" author="huydtg">
+
+        <addForeignKeyConstraint baseColumnNames="patient_id"
+                                 baseTableName="appointment_card"
+                                 constraintName="fk_appointment_card__patient_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="patient"
+        />
+
+        <addForeignKeyConstraint baseColumnNames="immunization_unit_id"
+                                 baseTableName="appointment_card"
+                                 constraintName="fk_appointment_card__immunization_unit_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="immunization_unit"
+        />
+
+        <addForeignKeyConstraint baseColumnNames="employee_id"
+                                 baseTableName="appointment_card"
+                                 constraintName="fk_appointment_card__employee_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="employee"
+        />
+    </changeSet>
+</databaseChangeLog>

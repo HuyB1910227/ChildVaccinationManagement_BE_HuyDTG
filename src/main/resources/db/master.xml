@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <property name="now" value="now()" dbms="mysql"/>
+    <property name="floatType" value="float" dbms="mysql"/>
+    <property name="clobType" value="clob" dbms="mysql"/>
+    <property name="blobType" value="longblob" dbms="mysql"/>
+    <property name="uuidType" value="varchar(36)" dbms="mysql"/>
+    <property name="datetimeType" value="datetime(6)" dbms="mysql"/>
+
+    <include file="db/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="db/changelog/202308130244_added_entity_User.xml" relativeToChangelogFile="false"/>
+    <include file="db/changelog/202308130246_added_entity_Role.xml" relativeToChangelogFile="false"/>
+    <include file="db/changelog/202308130247_added_entity_Employee.xml" relativeToChangelogFile="false"/>
+    <include file="db/changelog/202308130251_added_entity_Customer.xml" relativeToChangelogFile="false"/>
+    <include file="db/changelog/202308130253_added_entity_Administrator.xml" relativeToChangelogFile="false"/>
+    <include file="db/changelog/202308190729_added_entity_RefreshToken.xml" relativeToChangelogFile="false"/>
+    <include file="db/changelog/202308210538_added_entity_Patient.xml" relativeToChangelogFile="false"/>
+    <include file="db/changelog/202308210448_added_entity_ImmunizationUnit.xml" relativeToChangelogFile="false"/>
+    <include file="db/changelog/202308210513_added_entity_VaccineLot.xml" relativeToChangelogFile="false"/>
+    <include file="db/changelog/202308211214_added_entity_Provider.xml" relativeToChangelogFile="false"/>
+    <include file="db/changelog/202308210453_added_entity_FixedSchedule.xml" relativeToChangelogFile="false"/>
+    <include file="db/changelog/202308210550_added_entity_History.xml" relativeToChangelogFile="false"/>
+    <include file="db/changelog/202308210649_added_entity_AppointmentCard.xml" relativeToChangelogFile="false"/>
+    <include file="db/changelog/202308210701_added_entity_Assignment.xml" relativeToChangelogFile="false"/>
+    <include file="db/changelog/202308211143_added_entity_Vaccine.xml" relativeToChangelogFile="false"/>
+    <include file="db/changelog/202308211139_added_entity_VaccineType.xml" relativeToChangelogFile="false"/>
+    <include file="db/changelog/202308211145_added_entity_Disease.xml" relativeToChangelogFile="false"/>
+    <include file="db/changelog/202308211152_added_entity_Age.xml" relativeToChangelogFile="false"/>
+    <include file="db/changelog/202308211200_added_entity_Injection.xml" relativeToChangelogFile="false"/>
+    <include file="db/changelog/202308210544_added_entity_Nutrition.xml" relativeToChangelogFile="false"/>
+
+    <include file="db/changelog/202308130244_added_entity_constraints_User.xml" relativeToChangelogFile="false"/>
+    <include file="db/changelog/202308130247_added_entity_constraints_Employee.xml" relativeToChangelogFile="false"/>
+    <include file="db/changelog/202308130251_added_entity_constraints_Customer.xml" relativeToChangelogFile="false"/>
+    <include file="db/changelog/202308130253_added_entity_constraints_Administrator.xml" relativeToChangelogFile="false"/>
+    <include file="db/changelog/202308210538_added_entity_constraints_Patient.xml" relativeToChangelogFile="false"/>
+    <include file="db/changelog/202308210513_added_entity_constraints_VaccineLot.xml" relativeToChangelogFile="false"/>
+    <include file="db/changelog/202308210453_added_entity_constraints_FixedSchedule.xml" relativeToChangelogFile="false"/>
+    <include file="db/changelog/202308210550_added_entity_constraints_History.xml" relativeToChangelogFile="false"/>
+    <include file="db/changelog/202308210649_added_entity_constraints_AppointmentCard.xml" relativeToChangelogFile="false"/>
+    <include file="db/changelog/202308210701_added_entity_constraints_Assignment.xml" relativeToChangelogFile="false"/>
+    <include file="db/changelog/202308211143_added_entity_constraints_Vaccine.xml" relativeToChangelogFile="false"/>
+    <include file="db/changelog/202308211152_added_entity_constraints_Age.xml" relativeToChangelogFile="false"/>
+    <include file="db/changelog/202308211200_added_entity_constraints_Injection.xml" relativeToChangelogFile="false"/>
+    <include file="db/changelog/202308210544_added_entity_constraints_Nutrition.xml" relativeToChangelogFile="false"/>
+    <include file="db/changelog/202308190729_added_entity_constraints_RefreshToken.xml" relativeToChangelogFile="false"/>
+    <include file="db/changelog/202309210906_added_WorkingDayType_WorkingWeekType_entity_FixedSchedule.xml" relativeToChangelogFile="false"/>
+    <include file="db/changelog/202309270643_added_column_Status_entity_VaccineLot.xml" relativeToChangelogFile="false"/>
+    <include file="db/changelog/202310010932_added_column_QuantityUsed_entity_VaccineLot.xml" relativeToChangelogFile="false"/>
+
+
+
+    <include file="db/changelog/202309170452_modified_entity_Nutrition.xml" relativeToChangelogFile="false"/>
+    <include file="db/changelog/202309210619_modified_column_WorkingDay_WorkingWeek_entity_FixedSchedule.xml" relativeToChangelogFile="false"/>
+
+
+    <include file="db/changelog/202309171145_deleted_column_Name_entity_VaccineLot.xml" relativeToChangelogFile="false"/>
+    <include file="/db/changelog/202309180943_deleted_column_ScheduleType_entity_FixedSchedule.xml" relativeToChangelogFile="false"/>
+    <include file="/db/changelog/202309180946_added_column_IsEnable_entity_FixedSchedule.xml" relativeToChangelogFile="false"/>
+
+    <include file="db/changelog/202310010957_added_column_Status_And_Price_and_InjectionTime_entity_Assignment.xml" relativeToChangelogFile="false"/>
+    <include file="db/changelog/202310090544_added_column_VaccinationType_entity_VaccineLot.xml" relativeToChangelogFile="false"/>
+
+
+    <include file="db/changelog/202310181034_added_column_InjectionId_entity_Assignment.xml" relativeToChangelogFile="false"/>
+    <include file="db/changelog/202310181045_added_entity_constraints_Assignment.xml" relativeToChangelogFile="false"/>
+
+
+    <include file="db/changelog/202310220403_added_entity_NotificationToken.xml" relativeToChangelogFile="false"/>
+    <include file="db/changelog/202310220403_added_entity_constraints_NotificationToken.xml" relativeToChangelogFile="false"/>
+    <include file="db/changelog/202310220414_added_entity_Notification.xml" relativeToChangelogFile="false"/>
+    <include file="db/changelog/202310220414_added_entity_constraints_Notification.xml" relativeToChangelogFile="false"/>
+
+    <include file="db/changelog/202311060239_added_entity_FileSystemData.xml" relativeToChangelogFile="false"/>
+
+    <include file="db/changelog/202311280555_added_column_Dosage_entity_Assignment.xml" relativeToChangelogFile="false"/>
+
+    <include file="db/changelog/202329110200_added_column_NextAvailableInjectionDate_entity_Assignment.xml" relativeToChangelogFile="false"/>
+
+    <include file="db/changelog/202311290229_added_column_Description_Contraindication_entity_Vaccine.xml" relativeToChangelogFile="false"/>
+
+    <include file="db/changelog/202311290338_added_column_Note_RequestType_entity_Age.xml" relativeToChangelogFile="false"/>
+
+
+</databaseChangeLog>

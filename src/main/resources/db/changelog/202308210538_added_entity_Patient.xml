@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!--
+        Added the entity Patient.
+    -->
+    <changeSet id="202308210538-1" author="huydtg">
+        <createTable tableName="patient">
+            <column name="id" type="${uuidType}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="address" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="gender" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="date_of_birth" type="date">
+                <constraints nullable="false" />
+            </column>
+            <column name="full_name" type="varchar(100)">
+                <constraints nullable="false" />
+            </column>
+            <column name="avatar" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="customer_id" type="${uuidType}">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+    </changeSet>
+
+
+
+<!--    <changeSet id="202308210538-1-data" author="huydtg" context="faker">-->
+<!--        <loadData-->
+<!--                file="db/fake-data/patient.csv"-->
+<!--                separator=";"-->
+<!--                tableName="patient"-->
+<!--                usePreparedStatements="true">-->
+<!--            <column name="id" type="string"/>-->
+<!--            <column name="address" type="string"/>-->
+<!--            <column name="gender" type="numeric"/>-->
+<!--            <column name="date_of_birth" type="date"/>-->
+<!--            <column name="full_name" type="string"/>-->
+<!--            <column name="avatar" type="string"/>-->
+<!--        </loadData>-->
+<!--    </changeSet>-->
+</databaseChangeLog>

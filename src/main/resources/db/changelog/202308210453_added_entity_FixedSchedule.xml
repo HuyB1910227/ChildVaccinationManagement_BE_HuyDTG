@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!--
+        Added the entity FixedSchedule.
+    -->
+    <changeSet id="202308210453-1" author="huydtg">
+        <createTable tableName="fixed_schedule">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="working_day" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="working_week" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="schedule_type" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="vaccination_type" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="note" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="start_time" type="${datetimeType}">
+                <constraints nullable="false" />
+            </column>
+            <column name="end_time" type="${datetimeType}">
+                <constraints nullable="false" />
+            </column>
+            <column name="immunization_unit_id" type="${uuidType}">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+        <dropDefaultValue tableName="fixed_schedule" columnName="start_time" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="fixed_schedule" columnName="end_time" columnDataType="${datetimeType}"/>
+    </changeSet>
+
+
+<!--    <changeSet id="202308210453-1-data" author="huydtg" context="faker">-->
+<!--        <loadData-->
+<!--                file="db/fake-data/fixed_schedule.csv"-->
+<!--                separator=";"-->
+<!--                tableName="fixed_schedule"-->
+<!--                usePreparedStatements="true">-->
+<!--            <column name="id" type="numeric"/>-->
+<!--            <column name="working_day" type="numeric"/>-->
+<!--            <column name="working_week" type="numeric"/>-->
+<!--            <column name="schedule_type" type="string"/>-->
+<!--            <column name="vaccination_type" type="string"/>-->
+<!--            <column name="note" type="string"/>-->
+<!--            <column name="start_time" type="date"/>-->
+<!--            <column name="end_time" type="date"/>-->
+<!--        </loadData>-->
+<!--    </changeSet>-->
+
+</databaseChangeLog>

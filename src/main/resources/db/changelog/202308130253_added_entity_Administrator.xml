@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!--
+        Added the entity Administrator.
+    -->
+    <changeSet id="202308130253-1" author="huydtg">
+        <createTable tableName="administrator">
+            <column name="id" type="${uuidType}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="full_name" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="identity_card" type="varchar(255)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="address" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="gender" type="int">
+                <constraints nullable="false" />
+            </column>
+            <column name="date_of_birth" type="date">
+                <constraints nullable="false" />
+            </column>
+            <column name="avatar" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="career" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="phone" type="varchar(20)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="email" type="varchar(255)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="hotline" type="varchar(255)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="user_id" type="${uuidType}">
+                <constraints nullable="true" unique="true" uniqueConstraintName="ux_administrator__user_id" />
+            </column>
+        </createTable>
+    </changeSet>
+
+
+    <changeSet id="202308130253-1-data" author="huydtg" context="faker">
+        <loadData
+                file="db/fake-data/administrator.csv"
+                separator=";"
+                tableName="administrator"
+                usePreparedStatements="true">
+            <column name="id" type="string"/>
+            <column name="phone" type="string"/>
+            <column name="full_name" type="string"/>
+            <column name="identity_card" type="string"/>
+            <column name="address" type="string"/>
+            <column name="gender" type="numeric"/>
+            <column name="date_of_birth" type="date"/>
+            <column name="avatar" type="string"/>
+            <column name="email" type="string"/>
+            <column name="hotline" type="string"/>
+        </loadData>
+    </changeSet>
+
+</databaseChangeLog>

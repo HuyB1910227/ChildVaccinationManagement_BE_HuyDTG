@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!--
+        Added the entity Vaccine.
+    -->
+    <changeSet id="202308211143-1" author="huydtg">
+        <createTable tableName="vaccine">
+            <column name="id" type="${uuidType}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(100)">
+                <constraints nullable="false" />
+            </column>
+            <column name="dosage" type="double">
+                <constraints nullable="false" />
+            </column>
+            <column name="common_reaction" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="vaccine_type_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="202308211143-1-relations" author="huydtg">
+
+        <createTable tableName="rel_vaccine__disease">
+            <column name="disease_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="vaccine_id" type="${uuidType}">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="vaccine_id, disease_id" tableName="rel_vaccine__disease"/>
+    </changeSet>
+
+
+<!--    <changeSet id="202308211143-1-data" author="huydtg" context="faker">-->
+<!--        <loadData-->
+<!--                file="db/fake-data/vaccine.csv"-->
+<!--                separator=";"-->
+<!--                tableName="vaccine"-->
+<!--                usePreparedStatements="true">-->
+<!--            <column name="id" type="string"/>-->
+<!--            <column name="name" type="string"/>-->
+<!--            <column name="dosage" type="numeric"/>-->
+<!--            <column name="common_reaction" type="string"/>-->
+<!--        </loadData>-->
+<!--    </changeSet>-->
+</databaseChangeLog>

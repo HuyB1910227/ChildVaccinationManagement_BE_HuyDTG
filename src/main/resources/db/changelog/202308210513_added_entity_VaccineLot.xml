@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!--
+        Added the entity VaccineLot.
+    -->
+    <changeSet id="202308210513-1" author="huydtg">
+        <createTable tableName="vaccine_lot">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(100)">
+                <constraints nullable="false" />
+            </column>
+            <column name="lot_code" type="varchar(100)">
+                <constraints nullable="false" />
+            </column>
+            <column name="quantity" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="expired_date" type="${datetimeType}">
+                <constraints nullable="false" />
+            </column>
+            <column name="transaction_date" type="${datetimeType}">
+                <constraints nullable="false" />
+            </column>
+            <column name="manufacturing_date" type="${datetimeType}">
+                <constraints nullable="false" />
+            </column>
+            <column name="sale_price" type="decimal(21,0)">
+                <constraints nullable="false" />
+            </column>
+            <column name="vaccine_id" type="${uuidType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="provider_id" type="bigint">
+                <constraints nullable="false" />
+            </column>
+            <column name="immunization_unit_id" type="${uuidType}">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+        <dropDefaultValue tableName="vaccine_lot" columnName="expired_date" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="vaccine_lot" columnName="transaction_date" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="vaccine_lot" columnName="manufacturing_date" columnDataType="${datetimeType}"/>
+    </changeSet>
+
+
+<!--    <changeSet id="202308210513-1-data" author="huydtg" context="faker">-->
+<!--        <loadData-->
+<!--                file="db/fake-data/vaccine_lot.csv"-->
+<!--                separator=";"-->
+<!--                tableName="vaccine_lot"-->
+<!--                usePreparedStatements="true">-->
+<!--            <column name="id" type="numeric"/>-->
+<!--            <column name="name" type="string"/>-->
+<!--            <column name="lot_code" type="string"/>-->
+<!--            <column name="quantity" type="numeric"/>-->
+<!--            <column name="expired_date" type="date"/>-->
+<!--            <column name="transaction_date" type="date"/>-->
+<!--            <column name="manufacturing_date" type="date"/>-->
+<!--            <column name="sale_price" type="numeric"/>-->
+<!--        </loadData>-->
+<!--    </changeSet>-->
+
+</databaseChangeLog>

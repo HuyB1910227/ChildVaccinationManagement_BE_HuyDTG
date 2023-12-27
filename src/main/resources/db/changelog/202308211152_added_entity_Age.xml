@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!--
+        Added the entity Age.
+    -->
+    <changeSet id="202308211152-1" author="huydtg">
+        <createTable tableName="age">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="min_age" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="min_age_type" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="max_age" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="max_age_type" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="vaccine_id" type="${uuidType}">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+    </changeSet>
+
+<!--    <changeSet id="202308211152-1-data" author="huydtg" context="faker">-->
+<!--        <loadData-->
+<!--                file="db/fake-data/age.csv"-->
+<!--                separator=";"-->
+<!--                tableName="age"-->
+<!--                usePreparedStatements="true">-->
+<!--            <column name="id" type="numeric"/>-->
+<!--            <column name="min_age" type="numeric"/>-->
+<!--            <column name="min_age_type" type="string"/>-->
+<!--            <column name="max_age" type="numeric"/>-->
+<!--            <column name="max_age_type" type="string"/>-->
+<!--        </loadData>-->
+<!--    </changeSet>-->
+
+
+</databaseChangeLog>

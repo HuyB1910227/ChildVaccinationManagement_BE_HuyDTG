@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!--
+        Modified type of weight and height
+    -->
+    <changeSet id="202309170452-1" author="huydtg">
+        <modifyDataType
+                tableName="nutrition"
+                columnName="weight"
+                newDataType="double"
+        />
+        <addDefaultValue
+                tableName="nutrition"
+                columnName="weight"
+                defaultValueNumeric="0.0"
+        />
+        <modifyDataType
+                tableName="nutrition"
+                columnName="height"
+                newDataType="double"
+        />
+        <addDefaultValue
+                tableName="nutrition"
+                columnName="height"
+                defaultValueNumeric="0.0"
+        />
+    </changeSet>
+</databaseChangeLog>
